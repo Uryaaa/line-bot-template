@@ -1,0 +1,22 @@
+{
+  "name": "templatebot",
+  "version": "1.0.0",
+  "description": "Yet Another LINE Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "LINE"
+  ],
+  "author": "Tama-chan",
+  "license": "ISC",
+  "dependencies": {
+    "@line/bot-sdk": "^7.5.2",
+    "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5",
+    "enmap": "^5.9.10",
+    "express": "^4.18.2",
+    "quick.db": "^9.1.7"
+  }
+}
