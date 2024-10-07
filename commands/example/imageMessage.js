@@ -6,10 +6,8 @@ module.exports = {
   handler: (client, event) => {
     client.replyMessage(event.replyToken, {
       type: "image",
-      originalContentUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6dWIrCGzgkudyokIJdxObt6Ln9Kojbb-bQg&s",
-      previewImageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6dWIrCGzgkudyokIJdxObt6Ln9Kojbb-bQg&s",
+      originalContentUrl:`${process.env.baseurl}/image/line.png`,
+      previewImageUrl:`${process.env.baseurl}/image/line.png`,
     });
   },
 };

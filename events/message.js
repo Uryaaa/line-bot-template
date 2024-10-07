@@ -1,3 +1,5 @@
+const handleEcho = require('../handler/echoHandler');
+const handleAkinator = require("../handler/akinatorHandler");
 module.exports = async (event, client) => {
   if (event.message.type !== "text") {
     return; // Ignore non-text messages
@@ -7,11 +9,18 @@ module.exports = async (event, client) => {
   const prefix = '!'
   const args = userMessage.slice(prefix.length).trim().split(/ +/);
   // Check if the message starts with the prefix
-  if (!userMessage.startsWith(prefix)) {
-    return; // Ignore messages without the prefix
-  }
 
+  const isEchoHandled = await handleEcho(client, event);
+
+  if (isEchoHandled) {
+    // Echo mode handled, no need to process further
+    return;
   // Extract the command after the prefix
+  }
+    const isAkinatorHandled = await handleAkinator(client, event);
+    if (isAkinatorHandled) {
+      return; // Akinator mode handled the message, so return early
+    }
 
 
   // Check if the command matches any loaded command or alias, and run the corresponding handler
