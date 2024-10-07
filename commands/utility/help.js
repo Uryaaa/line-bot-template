@@ -13,9 +13,13 @@ module.exports = {
         .filter((x) => x.category == "example")
         .map((x) => "[" + x.command + "]")
         .join(", ");
+      const fun = client.commands
+        .filter((x) => x.category == "fun")
+        .map((x) => "[" + x.command + "]")
+        .join(", ");
          client.replyMessage(event.replyToken, { 
          type: "text",
-         text: `Utility commands\n${utility}\n\nExample commands\n${example}` });
+         text: `Utility commands\n${utility}\n\nExample commands\n${example}\n\nFun commands\n${fun}` });
      }
      else {
        const command =
