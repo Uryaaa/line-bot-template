@@ -34,7 +34,7 @@ module.exports = async (event, client) => {
       // If no handler is found, send a fallback message
       client.replyMessage(event.replyToken, {
         type: "text",
-        text: `Tidak ada handler yang cocok untuk postback data: ${postbackData}`,
+        text: `no handler found for postback data: ${postbackData}`,
       });
     }
   }

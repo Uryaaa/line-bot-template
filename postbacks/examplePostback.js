@@ -1,5 +1,5 @@
 module.exports = {
-  postbackData: "hello こんにちは", // No id needed, just 'ping'
+  postbackData: "hello こんにちは", // No id needed
   handler: (client, event) => {
     client.replyMessage(event.replyToken, {
       type: "text",

@@ -1,8 +1,8 @@
 module.exports = async (event, client) => {
-  // When someone joins the group, send a welcome message
+  // When someone follow the bot
   // Use the reply API to send the welcome message
   await client.replyMessage(event.replyToken, {
     type: "text",
-    text: "Hey, welcome!",
+    text: 'Thank you for following me! use my prefix "!" to start using commands',
   });
 };

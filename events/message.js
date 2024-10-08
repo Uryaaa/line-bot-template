@@ -9,6 +9,9 @@ module.exports = async (event, client) => {
   const prefix = '!'
   const args = userMessage.slice(prefix.length).trim().split(/ +/);
   // Check if the message starts with the prefix
+  //if (!userMessage.startsWith(prefix)) {
+    //return; // Ignore messages without the prefix
+  //} this will also ignore echo and akinator 
 
   const isEchoHandled = await handleEcho(client, event);
 

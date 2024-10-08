@@ -19,25 +19,21 @@ module.exports = {
         });
       }
 
-      // Ambil nilai yang tersimpan di database atau default 0 (gunakan await)
       const prevNum = await db.get(`sum_${event.source.userId}`) || 0;
 
-      // Tambahkan angka baru ke sum
       const newNum = prevNum + input;
 
-      // Simpan nilai yang baru ke database
       await db.set(`sum_${event.source.userId}`, newNum);
 
-      // Kembalikan pesan dengan nilai yang diperbarui
       client.replyMessage(event.replyToken, {
         type: "text",
-        text: `Nilai sekarang adalah: ${newNum}`,
+        text: `Current Number : ${newNum}`,
       });
     } catch (error) {
       console.error("Error in add command:", error);
       client.replyMessage(event.replyToken, {
         type: "text",
-        text: "Terjadi kesalahan. Mohon coba lagi nanti.",
+        text: "Check console log ",
       }); 
     }
   },

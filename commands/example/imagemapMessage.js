@@ -8,7 +8,7 @@ module.exports = {
     //
     client.replyMessage(event.replyToken, {
       type: "imagemap",
-      baseUrl: `${process.env.baseurl}/rich`,
+      baseUrl: `${process.env.baseurl}/imagemap`,
       altText: "Imagemap alt text",
       baseSize: { width: 1040, height: 1040 },
       actions: [

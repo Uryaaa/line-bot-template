@@ -1,5 +1,5 @@
-// Use the reply API to send the welcome message
-module.exports = {
+//https://developers.line.biz/en/reference/messaging-api/#flex-message
+https: module.exports = {
   command: "flex",
   aliases: ["carousel"],
   category: "example",
@@ -13,7 +13,7 @@ module.exports = {
         type: "carousel",
         columns: [
           {
-            thumbnailImageUrl:`${process.env.baseurl}/image/line.png`,
+            thumbnailImageUrl: `${process.env.baseurl}/image/line.png`,
             title: "hoge",
             text: "fuga",
             actions: [
@@ -26,8 +26,7 @@ module.exports = {
             ],
           },
           {
-            thumbnailImageUrl:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6dWIrCGzgkudyokIJdxObt6Ln9Kojbb-bQg&sL",
+            thumbnailImageUrl: `${process.env.baseurl}/image/line.png`,
             title: "hoge",
             text: "fuga",
             actions: [

@@ -1,5 +1,4 @@
 
-// Use the reply API to send the welcome message
 module.exports = {
   command: "video",
   aliases: ["douga"],

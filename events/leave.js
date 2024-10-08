@@ -1,6 +1,5 @@
 module.exports =  (event, client) => {
-  // When bot joins a group or room
-
-  // Use the reply API to send the welcome message
+// When bot leaves a group chat
+// Do something else here...
 console.log(`I'm leaving`);
 };

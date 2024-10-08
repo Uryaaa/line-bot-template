@@ -1,4 +1,3 @@
-// Use the reply API to send the welcome message
 module.exports = {
   command: "template",
   aliases: ["button"],

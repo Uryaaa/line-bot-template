@@ -1,4 +1,4 @@
-// Use the reply API to send the welcome message
+// Sticker List https://developers.line.biz/en/docs/messaging-api/sticker-list/
 module.exports = {
   command: "sticker",
   aliases: ["stamp"],
