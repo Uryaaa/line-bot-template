@@ -1,5 +1,14 @@
 # LINE Messager bot template
 Starter template for LINE Messager bot aiming for easy LINE bot creation
+
+## ✅ Features
+- [x] Commands handling for easy commands creation
+- [x] Dynamic webhook event handling 
+- [x] Postback handling for easy postback event creation
+- [x] Almost all `message.type` examples are available
+- [x] QuickDB examples (intended for local hosting, you probably need to change it if you want to host somewhere else)
+- [x] **Bonus** : Akinator
+
 ## 🔩 Requirements
 
 * **Node.js** 18 or higher
@@ -41,6 +50,31 @@ module.exports = {
 };
 ```
 And Many more example of `event.message.type` are included
+
+## 📁 Folder Structure
+This is folder structure if you setup the bot correctly
+```
+/commands
+    /db
+    /example
+    /utility
+/events
+/handler
+/node_modules
+/postbacks
+/static
+    /audio
+    /image
+    /imagemap
+    /video
+.env
+.gitignore
+index.js
+package-lock.json
+package.json
+```
+Don't modify events and handler folder unless you know what you're doing
+
 ## 📖 LINE API Documentation
 
 See the official API documentation for more information
