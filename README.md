@@ -73,7 +73,7 @@ index.js
 package-lock.json
 package.json
 ```
-Don't modify events and handler folder unless you know what you're doing
+***Don't modify events and handler folder unless you know what you're doing**
 
 ## 📖 LINE API Documentation
 
