@@ -7,7 +7,8 @@ module.exports = {
     
     client.replyMessage(event.replyToken, {
       type: 'text',
-      text: 'This is text message example'
+      text: 'This is text message example',
+      quoteToken: event.message.quoteToken, // Reply to the message
     });
   },
 };
