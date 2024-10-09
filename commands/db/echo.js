@@ -14,7 +14,7 @@ module.exports = {
     if (echoOwner) {
       return client.replyMessage(event.replyToken, {
         type: "text",
-        text: "Mode echo sudah aktif oleh pengguna lain.",
+        text: "Echo mode is already active by another user.",
       });
     }
 
@@ -22,7 +22,7 @@ module.exports = {
     await db.set(`echoMode_owner`, userId);
     client.replyMessage(event.replyToken, {
       type: "text",
-      text: "Masuk ke mode echo!",
+      text: "Entered echo mode! type /end to quit echo mode",
     });
   },
 };

@@ -1,42 +1,35 @@
-const handleEcho = require('../handler/echoHandler');
-const handleAkinator = require("../handler/akinatorHandler");
+const handlers = require("../handlers/handlers");
+
 module.exports = async (event, client) => {
-  if (event.message.type !== "text") {
-    return; // Ignore non-text messages
+  // Call the centralized handlers
+  const isHandled = await handlers(client, event);
+  if (isHandled) {
+    return; // If the event was handled by content, echo, or akinator, stop further processing
   }
 
+  // Now, handle text-based commands
   const userMessage = event.message.text.toLowerCase();
-  const prefix = '!'
+  const prefix = "!";
   const args = userMessage.slice(prefix.length).trim().split(/ +/);
-  // Check if the message starts with the prefix
-  //if (!userMessage.startsWith(prefix)) {
-    //return; // Ignore messages without the prefix
-  //} this will also ignore echo and akinator 
 
-  const isEchoHandled = await handleEcho(client, event);
-
-  if (isEchoHandled) {
-    // Echo mode handled, no need to process further
-    return;
-  // Extract the command after the prefix
+  // Now, check if the message starts with the prefix for regular commands
+  if (!userMessage.startsWith(prefix)) {
+    return; // Ignore messages without the prefix if no special modes are active
   }
-    const isAkinatorHandled = await handleAkinator(client, event);
-    if (isAkinatorHandled) {
-      return; // Akinator mode handled the message, so return early
-    }
 
+  // Extract the command after the prefix
+  const commandName = args.shift().toLowerCase();
 
   // Check if the command matches any loaded command or alias, and run the corresponding handler
-const commandName = args.shift().toLowerCase();
+  const cmd =
+    client.commands.get(commandName) ||
+    client.commands.find(
+      (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
+    );
 
-    const cmd =
-      client.commands.get(commandName) ||
-      client.commands.find(
-        (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
-      );
-    try {
-      if (cmd) cmd.handler(client, event, args);
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    if (cmd) cmd.handler(client, event, args);
+  } catch (error) {
+    console.log(error);
   }
+};

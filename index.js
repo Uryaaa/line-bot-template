@@ -2,14 +2,12 @@
 This is a LINE bot intended for template starter for someone who want to build their own bot
 all @line/bot-sdk documentation can be found at https://developers.line.biz/en/docs/
 */
-
-
 require("dotenv").config();
 const line = require("@line/bot-sdk");
 const express = require("express");
-const { loadEvents } = require("./handler/eventLoader");
-const { loadCommands } = require("./handler/commandLoader");
-const { loadPostbacks } = require("./handler/postbackLoader");
+const { loadEvents } = require("./loaders/eventLoader");
+const { loadCommands } = require("./loaders/commandLoader");
+const { loadPostbacks } = require("./loaders/postbackLoader");
 const path = require("path");
 
 // LINE SDK configuration
