@@ -8,6 +8,7 @@ Starter template for LINE Messager bot aiming for easy LINE bot creation
 - [x] Almost all `message.type` examples are available
 - [x] QuickDB examples (intended for local hosting, you probably need to change it if you want to host somewhere else)
 - [x] `getMessageContent(message.id)` example usage
+- [x] Displaying Rich menu
 - [x] **Bonus** : Akinator
 
 ## 🔩 Requirements
@@ -51,6 +52,12 @@ module.exports = {
 };
 ```
 And Many more example of `event.message.type` are included
+## 📃 Rich menu
+It's a very rough method of handling rich menu if not the worst :< Because its keep returning `status: 400` yet it's work, pull request are open
+ 
+![image](https://github.com/user-attachments/assets/24b10349-e334-4256-8348-599bb98afff8)
+
+More about Rich menu can be found here : [https://developers.line.biz/en/docs/messaging-api/using-rich-menus](https://developers.line.biz/en/docs/messaging-api/using-rich-menus/)
 
 ## 📁 Folder Structure
 This is folder structure if you setup the bot correctly
