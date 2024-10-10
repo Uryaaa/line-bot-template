@@ -7,6 +7,7 @@ Starter template for LINE Messager bot aiming for easy LINE bot creation
 - [x] Postback handling for easy postback event creation
 - [x] Almost all `message.type` examples are available
 - [x] QuickDB examples (intended for local hosting, you probably need to change it if you want to host somewhere else)
+- [x] `getMessageContent(message.id)` example usage
 - [x] **Bonus** : Akinator
 
 ## 🔩 Requirements
@@ -58,8 +59,10 @@ This is folder structure if you setup the bot correctly
     /db
     /example
     /utility
+/downloads
 /events
-/handler
+/handlers
+/loaders
 /node_modules
 /postbacks
 /static
@@ -73,7 +76,7 @@ index.js
 package-lock.json
 package.json
 ```
-***Don't modify events and handler folder unless you know what you're doing**
+***Don't modify events and loaders folder unless you know what you're doing**
 
 ## 📖 LINE API Documentation
 
