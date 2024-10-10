@@ -30,7 +30,7 @@ loadEvents(client, app, config);
 // Setup Rich Menu
 // (async () => {
 //   try {
-//     await setupRichMenu(client); // Panggil fungsi setupRichMenu
+//     await setupRichMenu(client); 
 //     console.log("Rich menu setup completed!");
 //   } catch (err) {
 //     console.error("Failed to setup rich menu:", err);
