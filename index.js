@@ -9,7 +9,7 @@ const { loadEvents } = require("./loaders/eventLoader");
 const { loadCommands } = require("./loaders/commandLoader");
 const { loadPostbacks } = require("./loaders/postbackLoader");
 const path = require("path");
-const { setupRichMenu } = require("./richMenu"); 
+
 // LINE SDK configuration
 const config = {
   channelSecret: process.env.channelSecret,
@@ -26,18 +26,19 @@ const app = express();
 // Load commands, events, and postbacks
 loadCommands(client);
 loadPostbacks(client);
-
-// Load static files
-app.use("/", express.static(path.join(__dirname, "static")));
+loadEvents(client, app, config);
 // Setup Rich Menu
 // (async () => {
 //   try {
-//     await setupRichMenu(client);
+//     await setupRichMenu(client); // Panggil fungsi setupRichMenu
 //     console.log("Rich menu setup completed!");
 //   } catch (err) {
 //     console.error("Failed to setup rich menu:", err);
 //   }
 // })();
+// Load static files
+app.use("/", express.static(path.join(__dirname, "static")));
+
 // Listen on port
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
