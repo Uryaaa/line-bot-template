@@ -44,9 +44,6 @@ module.exports = async (client, event) => {
       });
     }
 
-    // Progress the game with the given answer
-    const test = await akiSession.step(answerIndex);
-
     // Check if Akinator has enough progress to make a guess
     if (akiSession.guess?.id_base_proposition) {
       const guess = akiSession.guess;
@@ -76,7 +73,7 @@ module.exports = async (client, event) => {
         type: "text",
         text: `Question ${akiSession.currentStep + 1}: ${
           akiSession.question
-        }\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not`,
+        }\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n...or type "/end" to end the game`,
       });
     }
   }
