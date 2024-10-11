@@ -53,11 +53,11 @@ module.exports = {
 ```
 And Many more example of `event.message.type` are included
 ## 📃 Displaying rich menu
-It's a very rough method of handling rich menu if not the worst :< Uncomment these lines of code below to create a new rich menu everytime bot is running, there is not so many use cases i can think of when using rich menu. Maybe you can.
+It's a very rough method of handling rich menu if not the worst :< Uncomment these lines of code below in `index.js` to create a new rich menu everytime bot is running, there is not so many use cases i can think of when using rich menu. Maybe you can.
  
 ![image](https://github.com/user-attachments/assets/24b10349-e334-4256-8348-599bb98afff8)
 
-More about Rich menu can be found here : [https://developers.line.biz/en/docs/messaging-api/using-rich-menus](https://developers.line.biz/en/docs/messaging-api/using-rich-menus/)
+More about Rich menu can be found here : [https://developers.line.biz/en/docs/messaging-api/using-rich-menus/](https://developers.line.biz/en/docs/messaging-api/using-rich-menus/)
 
 ## 📁 Folder Structure
 This is folder structure if you setup the bot correctly
@@ -75,6 +75,7 @@ This is folder structure if you setup the bot correctly
 /static
     /audio
     /image
+        /RichMenu_DesignTemplate
     /imagemap
     /video
 .env
