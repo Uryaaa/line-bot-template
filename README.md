@@ -83,6 +83,7 @@ This is folder structure if you setup the bot correctly
 index.js
 package-lock.json
 package.json
+richMenu.js
 ```
 ***Don't modify events and loaders folder unless you know what you're doing**
 
