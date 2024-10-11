@@ -52,8 +52,8 @@ module.exports = {
 };
 ```
 And Many more example of `event.message.type` are included
-## 📃 Rich menu
-It's a very rough method of handling rich menu if not the worst :< Because its keep returning `status: 400` yet it's work, pull request are open
+## 📃 Displaying rich menu
+It's a very rough method of handling rich menu if not the worst :< Uncomment these lines of code below to create a new rich menu everytime bot is running, there is not so many use cases i can think of when using rich menu. Maybe you can.
  
 ![image](https://github.com/user-attachments/assets/24b10349-e334-4256-8348-599bb98afff8)
 
