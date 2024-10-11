@@ -29,7 +29,7 @@ module.exports = {
       // Ask the first question
       client.replyMessage(event.replyToken, {
         type: "text",
-        text: `Think of a character and answer my questions!\nQuestion 1: ${aki.question}\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n...or type "/end" to end the game`,
+        text: `Think of a character and answer my questions!\nQuestion 1: ${aki.question}\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n... or type "/end" to end the game`,
       });
     } else {
       client.replyMessage(event.replyToken, {
