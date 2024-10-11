@@ -9,7 +9,7 @@ const { loadEvents } = require("./loaders/eventLoader");
 const { loadCommands } = require("./loaders/commandLoader");
 const { loadPostbacks } = require("./loaders/postbackLoader");
 const path = require("path");
-//const { setupRichMenu } = require("./richMenu")
+const { setupRichMenu } = require("./richMenu")
 // LINE SDK configuration
 const config = {
   channelSecret: process.env.channelSecret,
