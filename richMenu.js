@@ -52,9 +52,34 @@ const setupRichMenu = async (client) => {
       },
     ],
   });
+  // First we delete the existing rich menu if any
+  client.getRichMenuList()
+    .then((richmenuList) => {
+      for (var i = 0; i < richmenuList.length; i++) {
+        client.deleteRichMenu(richmenuList[i].richMenuId);
+      }
+      console.log("Done deleting ALL rich menu");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  // Don't forget to delete the alias if any
+  client.getRichMenuAliasList()
+    .then((richmenuListAlias) => {
+      for (var i = 0; i < richmenuListAlias.aliases.length; i++) {
+        client.deleteRichMenuAlias(
+          richmenuListAlias.aliases[i].richMenuAliasId
+        );
+      }
+      console.log("Done deleting ALL rich menu alias");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   // Create the Rich Menu
-  const richMenuId = (await client.createRichMenu(richmenu()));
+  const richMenuId = await client.createRichMenu(richmenu());
 
   // Read the image file as a buffer
   const filepathA = join(__dirname, "./static/image/rich.png");
@@ -66,10 +91,14 @@ const setupRichMenu = async (client) => {
   // Set the rich menu as the default
   await client.setDefaultRichMenu(richMenuId);
 
-  // Create an alias for the Rich Menu
-  await client.createRichMenuAlias({
-    richMenuId: richMenuId,
-    richMenuAliasId: "richId",
+  // Set the rich menu alias
+  client.createRichMenuAlias(richMenuId, "richmenualias")
+  client.getRichMenuAliasList()
+  .then((res) => {
+    console.log(`Rich menu has been displayed. id : ${richMenuId} | ${res.aliases[0].richMenuAliasId}`);
+  })
+  .catch((err) => {
+    console.log(err);
   });
 };
 
