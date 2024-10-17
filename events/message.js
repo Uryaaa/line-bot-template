@@ -30,6 +30,10 @@ module.exports = async (event, client) => {
   try {
     if (cmd) cmd.handler(client, event, args);
   } catch (error) {
+    return client.replyMessage(event.replyToken, {
+      type: "text",
+      text: "An error occurred while executing the command.",
+    });
     console.log(error);
   }
 };
