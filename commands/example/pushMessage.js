@@ -4,11 +4,18 @@ module.exports = {
   category: "example",
   description: "Push message example",
   handler: (client, event) => {
-// Sending a message to yourself using pushMessage
-   client.pushMessage(event.source.userId, {
-    type: "text",
-    text: "Hello, world!",
-  })
+    
+   if (event.source.type ==="group") {
+    client.pushMessage(event.source.groupId, {
+      type: "text",
+      text: "Hello, world!",
+    })
+   } else {
+    client.pushMessage(event.source.userId, {
+      type: "text",
+      text: "Hello, world!",
+    })
+   }
     
   },
 };
