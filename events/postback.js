@@ -22,8 +22,8 @@ module.exports = async (event, client) => {
       let id; // Declare id variable
 
       // If the postbackData includes an ID, extract it
-      if (postbackData.includes("_")) {
-        id = postbackData.split("_")[1];
+      if (postbackData.includes("PostbackData=")) {
+        id = postbackData.split("PostbackData=")[1];
         postback.handler(client, event, id); // Call handler with id
       } else {
         postback.handler(client, event); // Call handler without id

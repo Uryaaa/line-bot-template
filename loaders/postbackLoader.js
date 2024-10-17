@@ -13,7 +13,7 @@ module.exports.loadPostbacks = (client) => {
       const postback = require(`../postbacks/${file}`);
       console.log(`Loading postback ${file}`);
 
-if (postback.postbackData.endsWith("_")) {
+if (postback.postbackData.endsWith("PostbackData=")) {
   client.postbacks.set(postback.postbackData, postback);
 } else {
   client.postbacks.set(postback.postbackData, postback);
