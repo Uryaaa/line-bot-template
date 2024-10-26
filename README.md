@@ -23,9 +23,9 @@ Starter template for LINE Messager bot aiming for easy LINE bot creation
   ```
 - make `.env` file and fill with your respective information
   ```
-  channelAccessToken= // Bot access token
-  channelSecret=      // Bot channel secret
-  baseurl=            // Server callback url
+  channelAccessToken= # Bot access token
+  channelSecret=      # Bot channel secret
+  baseurl=            # Server callback url
   ```
 - start the bot
   ```
@@ -44,9 +44,14 @@ module.exports = {
   description: 'Text message example',
   handler: (client, event) => {
     
-    client.replyMessage(event.replyToken, {
+    client.replyMessage({
+      replyToken: event.replyToken,
+      messages: [
+      {
       type: 'text',
       text: 'This is text message example'
+      }
+      ]
     });
   },
 };

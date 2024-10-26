@@ -38,9 +38,14 @@ module.exports = async (client, event) => {
     else if (["4", "probably"].includes(userMessage)) answerIndex = 3;
     else if (["5", "probably not"].includes(userMessage)) answerIndex = 4;
     else {
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "Please respond with 1 (Yes), 2 (No), 3 (Don't know), 4 (Probably), or 5 (Probably not).",
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: "Please respond with 1 (Yes), 2 (No), 3 (Don't know), 4 (Probably), or 5 (Probably not).",
+          },
+        ],
       });
     }
 
@@ -57,27 +62,35 @@ module.exports = async (client, event) => {
       await db.delete(`${groupId}_akinatorSession`);
       await db.delete(`${groupId}_akinatorStep`);
 
-      return client.replyMessage(event.replyToken, [
-        {
-          type: "text",
-          text: `I think your character is: ${guess.name_proposition}\nDescription: ${guess.description_proposition}`,
-        },
-        {
-          type: "image",
-          originalContentUrl: guess.photo,
-          previewImageUrl: guess.photo,
-        },
-      ]);
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: `I think your character is: ${guess.name_proposition}\nDescription: ${guess.description_proposition}`,
+          },
+          {
+            type: "image",
+            originalContentUrl: guess.photo,
+            previewImageUrl: guess.photo,
+          },
+        ],
+      });
     } else {
       // Continue asking questions
   
       await db.set(`${groupId}_akinatorSession`, akiSession); // Update session for the group
       await db.set(`${groupId}_akinatorStep`, akiSession.currentStep); // Update step count for the group
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: `Question ${akiSession.currentStep + 1}: ${
-          akiSession.question
-        }\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n... or type "/end" to end the game`,
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: `Question ${akiSession.currentStep + 1}: ${
+              akiSession.question
+            }\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n... or type "/end" to end the game`,
+          },
+        ],
       });
     }
   }

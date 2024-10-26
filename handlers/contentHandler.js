@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Simplified export as a single function
-module.exports = async (client, event) => {
+module.exports = async (client, blobClient, event) => {
   const userId = event.source.userId;
 
   // Check if the user is expected to upload an image
@@ -13,7 +13,7 @@ module.exports = async (client, event) => {
   if (awaitingImage) {
     if (event.message.type === "image") {
       // Get image content
-      let stream = await client.getMessageContent(event.message.id);
+      let stream = await blobClient.getMessageContent(event.message.id);
 
       let chunks = [];
       stream.on("data", (chunk) => {
@@ -22,6 +22,9 @@ module.exports = async (client, event) => {
 
       stream.on("end", async () => {
         const buffer = Buffer.concat(chunks);
+
+        // Reset the user's state
+        await db.delete(`awaitingImage_${userId}`);
 
         // Define the file path and save the image
         const dirPath = path.join(__dirname, "../downloads");
@@ -35,13 +38,15 @@ module.exports = async (client, event) => {
         // Save the image
         fs.writeFileSync(filePath, buffer);
 
-        // Reset the user's state
-        await db.delete(`awaitingImage_${userId}`);
-
         // Respond that the image has been received
-        await client.replyMessage(event.replyToken, {
-          type: "text",
-          text: "Image received! Please check the downloads folder in the project folder.",
+        await client.replyMessage({
+          replyToken: event.replyToken,
+          messages: [
+            {
+              type: "text",
+              text: "Image received. Thank you!",
+            },
+          ],
         });
       });
 

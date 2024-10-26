@@ -1,4 +1,4 @@
-module.exports = async (event, client) => {
+module.exports = async (event, client, blobClient) => {
   // Check if the event is a postback
   if (event.postback && event.postback.data) {
     const postbackData = event.postback.data;
@@ -10,7 +10,7 @@ module.exports = async (event, client) => {
     if (!postback) {
       // Loop through all registered postbacks
       client.postbacks.forEach((value, key) => {
-        // Check for patterns like 'sticker_17842'
+        // Check for patterns like 'stickerPostbackData=17842'
         if (postbackData.startsWith(key)) {
           postback = value; // Set the postback handler that matches the key
         }
@@ -24,9 +24,9 @@ module.exports = async (event, client) => {
       // If the postbackData includes an ID, extract it
       if (postbackData.includes("PostbackData=")) {
         id = postbackData.split("PostbackData=")[1];
-        postback.handler(client, event, id); // Call handler with id
+        postback.handler(client, blobClient, event, id); // Call handler with id
       } else {
-        postback.handler(client, event); // Call handler without id
+        postback.handler(client, blobClient, event); // Call handler without id
       }
 
       console.log(`Postback handler found for: ${postbackData}`);

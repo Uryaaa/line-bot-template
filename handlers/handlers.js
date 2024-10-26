@@ -2,9 +2,9 @@ const handleEcho = require("../handlers/echoHandler");
 const handleAkinator = require("../handlers/akinatorHandler");
 const handleContent = require("../handlers/contentHandler");
 
-module.exports = async (client, event) => {
+module.exports = async (client, blobClient, event) => {
   // Always check if the content handler can process this event, even for non-text messages
-  const isContentHandled = await handleContent(client, event);
+  const isContentHandled = await handleContent(client, blobClient, event);
   if (isContentHandled) {
     return true; // Content handler processed the event, no need to proceed further
   }

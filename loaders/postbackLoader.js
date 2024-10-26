@@ -14,6 +14,7 @@ module.exports.loadPostbacks = (client) => {
       console.log(`Loading postback ${file}`);
 
 if (postback.postbackData.endsWith("PostbackData=")) {
+  // Handle both type postbacks
   client.postbacks.set(postback.postbackData, postback);
 } else {
   client.postbacks.set(postback.postbackData, postback);

@@ -4,12 +4,17 @@ module.exports = {
   aliases: [""],
   category: "example",
   description: "Multicast message example",
-  handler: (client, event) => {
+  handler: (client, blobClient, event) => {
     // Sending a message to yourself using Multicast
     
-    client.multicast([event.source.userId], {
-        type: "text",
-        text: "Hello, world!",
-});
+    client.multicast({
+      to : [event.source.userId], // Array of user IDs
+      messages : [
+        {
+          type: "text",
+          text: "Hello, this is a multicast message"
+        }
+      ]
+    });
   },
 };

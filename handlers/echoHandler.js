@@ -13,16 +13,26 @@ module.exports = async (client, event) => {
     // If the user types /end, exit echo mode
     if (userMessage === "/end") {
       await db.delete(`echoMode_owner`); // Remove the owner of echo mode
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "Mode echo selesai",
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: "Echo mode deactivated.",
+          },
+        ],
       });
     }
 
     // Echo the user's message
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text: userMessage,
+    return client.replyMessage({
+      replyToken: event.replyToken,
+      messages: [
+        {
+          type: "text",
+          text: userMessage,
+        },
+      ],
     });
   }
 

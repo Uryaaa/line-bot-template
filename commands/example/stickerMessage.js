@@ -4,12 +4,17 @@ module.exports = {
   aliases: ["stamp"],
   category: "example",
   description: "Sticker message example",
-  handler: (client, event) => {
+  handler: (client, blobClient, event) => {
     //
-    client.replyMessage(event.replyToken, {
-      type: "sticker",
-      packageId: "1070",
-      stickerId: "17843",
+    client.replyMessage({
+      replyToken: event.replyToken,
+      messages: [
+        {
+          type: "sticker",
+          packageId: "1070",
+          stickerId: "17843",
+        },
+      ],
     });
   },
 };

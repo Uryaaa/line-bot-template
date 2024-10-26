@@ -14,7 +14,7 @@ module.exports.loadCommands = (client) => {
     for (const file of commands) {
       const command = require(`../commands/${dirs}/${file}`);
       console.log(`Loading command ${file}`);
-      client.commands.set(command.command, command);
+      client.commands.set(command.command.toLowerCase(), command);
     }
   });
 };

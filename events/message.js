@@ -1,8 +1,8 @@
 const handlers = require("../handlers/handlers");
 
-module.exports = async (event, client) => {
+module.exports = async (event, client, blobClient) => {
   // Call the centralized handlers
-  const isHandled = await handlers(client, event);
+  const isHandled = await handlers(client, blobClient, event);
   if (isHandled) {
     return; // If the event was handled by content, echo, or akinator, stop further processing
   }
@@ -28,12 +28,12 @@ module.exports = async (event, client) => {
     );
 
   try {
-    if (cmd) cmd.handler(client, event, args);
+    if (cmd) cmd.handler(client, blobClient, event, args); // Pass blobClient to the command handler
   } catch (error) {
     return client.replyMessage(event.replyToken, {
       type: "text",
       text: "An error occurred while executing the command.",
     });
-    console.log(error);
+    
   }
 };

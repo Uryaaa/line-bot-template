@@ -3,17 +3,27 @@ module.exports = {
   aliases: ["dm"],
   category: "example",
   description: "Push message example",
-  handler: (client, event) => {
+  handler: (client, blobClient, event) => {
     
    if (event.source.type ==="group") {
-    client.pushMessage(event.source.groupId, {
-      type: "text",
-      text: "Hello, world!",
+    client.pushMessage({
+      to: event.source.groupId,
+      messages: [
+        {
+          type: "text",
+          text: "Hello, world!",
+        },
+      ],
     })
    } else {
-    client.pushMessage(event.source.userId, {
-      type: "text",
-      text: "Hello, world!",
+    client.pushMessage({
+      to: event.source.userId,
+      messages: [
+        {
+          type: "text",
+          text: "Hello, world!",
+        },
+      ],
     })
    }
     

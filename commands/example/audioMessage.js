@@ -3,12 +3,17 @@ module.exports = {
   aliases: ["music"],
   category: "example",
   description: "Audio message example",
-  handler: (client, event) => {
+  handler: (client, blobClient, event) => {
     // Send audio file from static/audio/vine-boom.mp3
-    client.replyMessage(event.replyToken, {
-      type: "audio",
-      originalContentUrl: `${process.env.baseurl}/audio/vine-boom.mp3`,
-      duration: 1000,
-    });
-  },
-};
+      client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "audio",
+            originalContentUrl: `${process.env.baseurl}/audio/vine-boom.mp3`,
+            duration: 1000,
+          },
+        ],
+      });
+  }
+}

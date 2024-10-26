@@ -8,7 +8,7 @@ module.exports = {
   category: "fun",
   description:
     "Play Akinator: The bot will try to guess the character you are thinking of.",
-  handler: async (client, event, args) => {
+  handler: async (client, blobClient, event, args) => {
     const userId = event.source.userId;
     const groupId = event.source.groupId || event.source.roomId; // Check if the user is in a group or room
 
@@ -27,14 +27,24 @@ module.exports = {
       await db.set(`${groupId}_akinatorStep`, 0); // Track question steps for the group
 
       // Ask the first question
-      client.replyMessage(event.replyToken, {
-        type: "text",
-        text: `Think of a character and answer my questions!\nQuestion 1: ${aki.question}\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n... or type "/end" to end the game`,
+      client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: `Think of a character and answer my questions!\nQuestion 1: ${aki.question}\nAnswers:\n1. Yes\n2. No\n3. Don't know\n4. Probably\n5. Probably not\n\n... or type "/end" to end the game`,
+          },
+        ],
       });
     } else {
-      client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "Akinator is already running in this group. Please wait until the current session ends or type /end to stop it.",
+      client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: "Akinator is already running in this group. Please wait until the current session ends or type /end (Player only) to stop it.",
+          },
+        ],
       });
     }
   },

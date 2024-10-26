@@ -1,7 +1,7 @@
 const { join } = require("path");
 const { readFileSync } = require("fs");
 
-const setupRichMenu = async (client) => {
+const setupRichMenu = async (client, blobClient) => {
   const richmenu = () => ({
     size: {
       width: 2500,
@@ -86,7 +86,7 @@ const setupRichMenu = async (client) => {
   const bufferA = readFileSync(filepathA); // Read the file as a buffer
 
   // Upload the Rich Menu image
-  await client.setRichMenuImage(richMenuId, bufferA);
+  await blobClient.setRichMenuImage(richMenuId, bufferA);
 
   // Set the rich menu as the default
   await client.setDefaultRichMenu(richMenuId);

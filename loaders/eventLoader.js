@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-function loadEvents(client, app, config) {
+function loadEvents(client, blobClient, app, config) {
   const events = {};
   const eventsPath = path.join(__dirname, "../events");
 
@@ -17,14 +17,14 @@ function loadEvents(client, app, config) {
   app.post(
     "/callback",
     require("@line/bot-sdk").middleware(config),
-    async(req, res) => {
+    async (req, res) => {
       await Promise.all(
         req.body.events.map(async (event) => {
           const eventType = event.type;
 
           // Check if the event type is handled, and call the corresponding handler
           if (events[eventType]) {
-            await events[eventType](event, client);
+            await events[eventType](event, client, blobClient); // Pass both client and blobClient
           } else {
             console.log(`No handler for event type: ${eventType}`);
           }

@@ -4,12 +4,17 @@ module.exports = {
   aliases: ["douga"],
   category: "example",
   description: "video message example",
-  handler: (client, event) => {
+  handler: (client, blobClient, event) => {
     //
-    client.replyMessage(event.replyToken, {
-      type: "video",
-      originalContentUrl: `${process.env.baseurl}/video/video-ncs.mp4`,
-      previewImageUrl: `${process.env.baseurl}/image/video-example-thumbnail.jpg`,
+    client.replyMessage({
+      replyToken: event.replyToken,
+      messages: [
+        {
+          type: "video",
+          originalContentUrl: `${process.env.baseurl}/video/video-ncs.mp4`,
+          previewImageUrl: `${process.env.baseurl}/image/video-example-thumbnail.jpg`,
+        },
+      ],
     });
   },
 };

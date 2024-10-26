@@ -6,16 +6,22 @@ module.exports = {
   aliases: [],
   category: "utility",
   description: "Menambahkan angka ke database",
-  handler: async (client, event, args) => {
+  handler: async (client, blobClient, event, args) => {
     // Pastikan handler adalah async
     try {
       // Ambil angka dari args
       const input = parseInt(args[0]);
 
       if (isNaN(input)) {
-        client.replyMessage(event.replyToken, {
-          type: "text",
-          text: "Mohon masukkan angka yang valid.",
+        client.replyMessage({
+          replyToken: event.replyToken,
+          messages: [
+            { 
+              type: "text", 
+              text: "Invalid input. Please enter a number." 
+            }
+
+          ],
         });
       }
 
@@ -25,15 +31,25 @@ module.exports = {
 
       await db.set(`sum_${event.source.userId}`, newNum);
 
-      client.replyMessage(event.replyToken, {
-        type: "text",
-        text: `Current Number : ${newNum}`,
+      client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: `Current sum: ${newNum}`
+          }
+        ],
       });
     } catch (error) {
       console.error("Error in add command:", error);
-      client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "Check console log ",
+      client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: "An error occurred while processing your request."
+          }
+        ],
       }); 
     }
   },
