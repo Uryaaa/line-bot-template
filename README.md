@@ -1,5 +1,6 @@
 # LINE Messager bot template
-Starter template for LINE Messager bot aiming for easy LINE bot creation
+Starter template for LINE Messager bot aiming for easy LINE bot creation <br>
+[Click Here](https://github.com/Uryaaa/line-bot-template/tree/7.0.0) for template using @line-bot/sdk 7.0.0
 
 ## ✅ Features
 - [x] Commands handling for easy commands creation
