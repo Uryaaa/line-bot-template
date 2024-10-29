@@ -1,0 +1,64 @@
+{
+	// Place your line-sdk workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Command Handler Template": {
+    "prefix": "command",
+    "body": [
+      "module.exports = {",
+      "  command: \"${1:commandName}\",",
+      "  aliases: [\"${2:alias}\"],",
+      "  category: \"${3:category}\",",
+      "  description: \"${4:description}\",",
+      "  handler: async (client, blobClient, event, args) => {",
+      "    $5",
+      "  }",
+      "};"
+    ],
+    "description": "Template for a command handler module"
+  },
+
+  "client.replyMessage Template": {
+    "prefix": "replyMessage",
+    "body": [
+      "client.replyMessage({",
+      "  replyToken: event.replyToken,",
+      "  messages: [",
+      "    {",
+      "      type: \"${1:text}\",",
+      "      text: \"${2:Your message here}\"",
+      "    }",
+      "  ]",
+      "});"
+    ],
+    "description": "Template for client.replyMessage structure"
+  },
+
+  "Postback Handler Template": {
+    "prefix": "postback",
+    "body": [
+      "module.exports = {",
+      "  postbackData: \"${1:PostbackData=}\", // see examplePostbackDynamic.js",
+      "  cooldown: ${2:0},",
+      "  handler: async (client, blobClient, event, id) => {",
+      "    $3",
+      "  }",
+      "};"
+    ],
+    "description": "Template for postback handler module"
+  }
+}
