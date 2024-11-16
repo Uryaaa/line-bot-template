@@ -1,3 +1,6 @@
+// In this example, we using type:"button"
+// other template types can be found here : https://developers.line.biz/en/reference/messaging-api/#template-messages
+
 module.exports = {
   command: "template",
   aliases: ["button"],

@@ -32,9 +32,14 @@ module.exports = async (event, client, blobClient) => {
       console.log(`Postback handler found for: ${postbackData}`);
     } else {
       // If no handler is found, send a fallback message
-      client.replyMessage(event.replyToken, {
-        type: "text",
-        text: `no handler found for postback data: ${postbackData}`,
+      client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: `No handler found for postback data: ${postbackData}`,
+          },
+        ],
       });
     }
   }

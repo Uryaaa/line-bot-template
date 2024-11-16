@@ -19,10 +19,16 @@ module.exports = async (client, event) => {
       await db.delete(`${groupId}_akinatorOwner`);
       await db.delete(`${groupId}_akinatorSession`);
       await db.delete(`${groupId}_akinatorStep`);
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "Akinator game ended in this group. Thanks for playing!",
+      return client.replyMessage({
+        replyToken: event.replyToken,
+        messages: [
+          {
+            type: "text",
+            text: "Akinator game ended in this group. Thanks for playing!",
+          },
+        ],
       });
+      
     }
 
     // Retrieve the Akinator session from QuickDB for the group
