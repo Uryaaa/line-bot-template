@@ -30,9 +30,14 @@ module.exports = async (event, client, blobClient) => {
   try {
     if (cmd) cmd.handler(client, blobClient, event, args); // Pass blobClient to the command handler
   } catch (error) {
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text: "An error occurred while executing the command.",
+    return client.replyMessage({
+      replyToken: event.replyToken,
+      messages: [
+        {
+          type: "text",
+          text: "An error occurred while executing the command.",
+        },
+      ],
     });
     
   }
