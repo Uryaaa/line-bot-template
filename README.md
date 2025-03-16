@@ -1,5 +1,6 @@
 # LINE Messager bot template
-Starter template for LINE Messager bot aiming for easy LINE bot creation
+Starter template for LINE Messager bot aiming for easy LINE bot creation <br>
+[Click Here](https://github.com/Uryaaa/line-bot-template/tree/7.0.0) for template using @line-bot/sdk 7.0.0
 
 ## ✅ Features
 - [x] Commands handling for easy commands creation
@@ -42,7 +43,7 @@ module.exports = {
   aliases: ['ping'],
   category: "example",
   description: 'Text message example',
-  handler: (client, event) => {
+  handler: (client, blobClient, event) => {
     
     client.replyMessage({
       replyToken: event.replyToken,
@@ -56,7 +57,16 @@ module.exports = {
   },
 };
 ```
-And Many more example of `event.message.type` are included
+Alternatively you can use user snippets that come with this repo :
+| **Snippets** | **Descriptions**                  | 
+|--------------|-----------------------------------|
+| command      | Create new command handler        | 
+| replyMessage | create new replyMessage structure | 
+| postback     | Create new postback handler       |
+
+see [example](https://github.com/Uryaaa/line-bot-template/tree/main/commands/example) for other `message.type`
+
+
 ## 📃 Displaying rich menu
 It's a very rough method of handling rich menu if not the worst :< Uncomment these lines of code below in `index.js` to create a new rich menu everytime bot is running, there is not so many use cases i can think of when using rich menu. Maybe you can.
  
