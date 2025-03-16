@@ -1,11 +1,10 @@
 const fs = require("fs");
-const Enmap = require("enmap");
 
 module.exports.loadCommands = (client) => {
-  // Inisialisasi client.commands sebagai Enmap
-  client.commands = new Enmap();
+  // Initialize client.commands as Map
+  client.commands = new Map();
 
-  // Baca folder commands dan subfoldernya
+  // Read commands folder and subfolders
   fs.readdirSync("./commands").forEach((dirs) => {
     const commands = fs
       .readdirSync(`./commands/${dirs}`)

@@ -1,9 +1,8 @@
 const fs = require("fs");
-const Enmap = require("enmap");
 
 module.exports.loadPostbacks = (client) => {
-  // Initialize client.postbacks as Enmap
-  client.postbacks = new Enmap();
+  // Initialize client.postbacks as Map
+  client.postbacks = new Map();
 
   // Read the postbacks folder
   fs.readdirSync("./postbacks")
@@ -13,11 +12,11 @@ module.exports.loadPostbacks = (client) => {
       const postback = require(`../postbacks/${file}`);
       console.log(`Loading postback ${file}`);
 
-if (postback.postbackData.endsWith("PostbackData=")) {
-  // Handle both type postbacks
-  client.postbacks.set(postback.postbackData, postback);
-} else {
-  client.postbacks.set(postback.postbackData, postback);
-}
+      if (postback.postbackData.endsWith("PostbackData=")) {
+        // Handle both type postbacks
+        client.postbacks.set(postback.postbackData, postback);
+      } else {
+        client.postbacks.set(postback.postbackData, postback);
+      }
     });
 };

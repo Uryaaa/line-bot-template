@@ -4,7 +4,7 @@
 // Usable sticker can be found at : https://developers.line.biz/en/docs/messaging-api/sticker-list/
 module.exports = {
   postbackData: "stickerPostbackData=", // Prefix for dynamic sticker postbacks
-  handler: (client, event, id) => {
+  handler: (client, blobClient, event, id) => {
     const stickerId = parseInt(id, 10); // Convert the ID to an integer
     client.replyMessage({
       replyToken: event.replyToken,
