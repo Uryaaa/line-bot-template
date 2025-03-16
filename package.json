@@ -12,7 +12,7 @@
   "author": "Tama-chan",
   "license": "ISC",
   "dependencies": {
-    "@line/bot-sdk": "^9.5.0",
+    "@line/bot-sdk": "^9.7.1",
     "aki-api": "^7.0.1",
     "better-sqlite3": "^11.3.0",
     "dotenv": "^16.4.5",
