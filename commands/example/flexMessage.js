@@ -54,12 +54,22 @@ module.exports = {
                 },
                 {
                   type: "button",
-                  style: "link",
+                  style: "primary",
                   height: "sm",
                   action: {
                     type: "postback",
                     label: "Say hello",
-                    data: "hello",
+                    data: "hello こんにちは",
+                  },
+                },
+                {
+                  type: "button",
+                  style: "secondary",
+                  height: "sm",
+                  action: {
+                    type: "postback",
+                    label: "Sticker!",
+                    data: "stickerPostbackData=17843",
                   },
                 },
               ],
