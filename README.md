@@ -14,7 +14,7 @@ Starter template for LINE Messager bot aiming for easy LINE bot creation <br>
 
 ## 🔩 Requirements
 
-* **[Node.js](https://nodejs.org/en/download/prebuilt-installer)** 18 or higher
+* **[Node.js](https://nodejs.org/en/download/prebuilt-installer)** 20 or higher
 ## ⚙️ Bot setup
 - Create account and official account [here](https://account.line.biz/login)
 - Clone this repo
